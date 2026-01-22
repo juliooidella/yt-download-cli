@@ -7,7 +7,7 @@ Um utilitário simples em Python para baixar vídeos e músicas do YouTube (e ou
 Você pode instalar diretamente via `uv`:
 
 ```bash
-uv tool install video-dl-cli --from git+https://github.com/SEU_USUARIO/video-dl-cli.git
+uv tool install video-dl-cli --from git+https://github.com/juliooidella/yt-download-cli.git
 ```
 
 ## Uso
@@ -36,6 +36,15 @@ Exemplo:
 video-dl-cli "URL_DO_VIDEO" --audio --output "RockNacional"
 # O arquivo será salvo em: downloads/RockNacional/
 ```
+
+### Downloads de Playlist em Paralelo
+
+Para acelerar o download de playlists ou múltiplos links, use a flag `-p` seguida do número de downloads simultâneos:
+
+```bash
+video-dl-cli "URL_DA_PLAYLIST" -p 5
+```
+*Nota: No modo paralelo, a barra de progresso individual é desativada para manter o terminal limpo.*
 
 ### Baixar de um arquivo de texto
 
