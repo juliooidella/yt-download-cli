@@ -1,55 +1,92 @@
-# Video-DL CLI
+# 🎥 Video-DL CLI: Seu Downloader de Mídia Ultra-Rápido
 
-Um utilitário simples em Python para baixar vídeos e músicas do YouTube (e outros sites suportados pelo yt-dlp) via linha de comando.
+[![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/)
+[![Install with uv](https://img.shields.io/badge/install%20with-uv-purple)](https://github.com/astral-sh/uv)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-## Instalação
+> **Cansado de comandos complexos para baixar apenas um vídeo ou uma playlist inteira de músicas?**
 
-Você pode instalar diretamente via `uv`:
+O **Video-DL CLI** é uma ferramenta poderosa e simplificada, construída sobre o `yt-dlp`, que permite baixar vídeos e áudios com organização automática e alta performance.
+
+---
+
+## 🧐 O Problema que Resolvemos
+
+Baixar vídeos do YouTube ou de outras plataformas geralmente exige comandos longos, ou você acaba com arquivos espalhados em pastas bagunçadas. Se você quer baixar uma playlist de 50 músicas, esperar uma por uma é uma perda de tempo.
+
+❌ **Processo manual, sequencial e desorganizado.**
+
+---
+
+## ✨ A Solução: `video-dl-cli`
+
+O **Video-DL CLI** automatiza o trabalho sujo. Ele organiza seus downloads em uma estrutura limpa e permite que você use o poder do seu processador para baixar múltiplos arquivos simultaneamente.
+
+✅ **Organização automática em subpastas.**
+✅ **Downloads paralelos (Multi-threading).**
+✅ **Conversão direta para MP3 de alta qualidade.**
+✅ **Interface CLI amigável e intuitiva.**
+
+---
+
+## 🚀 Guia Rápido: Instalação e Uso
+
+### Passo 1: Instale a Ferramenta
+
+Recomendamos usar o `uv` (o instalador de Python mais rápido do mercado).
 
 ```bash
+# Instale o video-dl-cli globalmente
 uv tool install video-dl-cli --from git+https://github.com/juliooidella/yt-download-cli.git
 ```
 
-## Uso
+### Passo 2: Baixe sua primeira Mídia
 
-### Baixar vídeos (Padrão)
-
-```bash
-video-dl-cli "URL_DO_VIDEO"
-```
-
-### Baixar como MP3 (Música)
+O uso é extremamente direto.
 
 ```bash
-video-dl-cli "URL_DO_VIDEO" --audio
+# Baixar um vídeo na pasta padrão (downloads/musicas)
+video-dl-cli "https://www.youtube.com/watch?v=..."
+
+# Baixar como MP3 em uma pasta específica
+video-dl-cli "URL" --audio --output "MinhasFavoritas"
+
+# Baixar uma PLAYLIST INTEIRA em paralelo (5 vídeos por vez)
+video-dl-cli "URL_DA_PLAYLIST" --parallel 5
 ```
 
-### Diretório de Saída (Pasta Downloads)
+---
 
-Todos os downloads são salvos dentro de uma pasta `downloads/` no diretório atual.
+## ⚙️ Estrutura de Pastas
 
-- **Padrão**: Se você não informar nada, ele salva em `downloads/musicas`.
-- **Personalizado**: Se você informar um nome, ele salva em `downloads/SEU_NOME`.
+O CLI mantém seu computador organizado sem que você precise mover um dedo:
 
-Exemplo:
-```bash
-video-dl-cli "URL_DO_VIDEO" --audio --output "RockNacional"
-# O arquivo será salvo em: downloads/RockNacional/
+```text
+seu-diretorio/
+└── downloads/
+    ├── musicas/          <-- (Pasta padrão)
+    ├── RockNacional/     <-- (Pasta via --output RockNacional)
+    └── ...
 ```
 
-### Downloads de Playlist em Paralelo
+---
 
-Para acelerar o download de playlists ou múltiplos links, use a flag `-p` seguida do número de downloads simultâneos:
+## 🖥️ Recursos Principais
 
-```bash
-video-dl-cli "URL_DA_PLAYLIST" -p 5
-```
-*Nota: No modo paralelo, a barra de progresso individual é desativada para manter o terminal limpo.*
+| Recurso | Descrição | Comando |
+| :--- | :--- | :--- |
+| **🎵 Modo Áudio** | Extrai automaticamente o áudio e converte para MP3 192kbps. | `-a` ou `--audio` |
+| **⚡ Paralelismo** | Baixa múltiplos vídeos de uma playlist simultaneamente. | `-p` ou `--parallel` |
+| **📂 Organização** | Cria pastas automaticamente dentro do diretório `downloads/`. | `-o` ou `--output` |
+| **📄 Lote (Batch)** | Lê uma lista de links de um arquivo `.txt`. | `-f` ou `--file` |
+| **🛡️ Robustez** | Ignora vídeos deletados ou privados em playlists sem travar. | *(Automático)* |
 
-### Baixar de um arquivo de texto
+---
 
-Crie um arquivo `links.txt` com uma URL por linha:
+## 📝 Nota Importante
 
-```bash
-video-dl-cli -f links.txt -o "Downloads"
-```
+**Este projeto tem fins educacionais. O usuário é responsável por respeitar os termos de serviço das plataformas acessadas.**
+
+---
+
+[Reportar Bug](https://github.com/juliooidella/yt-download-cli/issues) • [Contribuir](https://github.com/juliooidella/yt-download-cli/pulls)
