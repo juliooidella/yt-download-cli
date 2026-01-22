@@ -1,0 +1,22 @@
+[project]
+name = "video-dl-cli"
+version = "0.1.0"
+description = "Um CLI simples para baixar vídeos e músicas usando yt-dlp"
+readme = "README.md"
+authors = [
+    { name = "Julio", email = "julio@example.com" }
+]
+requires-python = ">=3.8"
+dependencies = [
+    "yt-dlp",
+]
+
+[project.scripts]
+video-dl-cli = "video_dl.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/video_dl"]
